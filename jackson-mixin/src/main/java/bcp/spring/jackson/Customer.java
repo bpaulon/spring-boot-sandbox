@@ -9,7 +9,7 @@ import lombok.experimental.Accessors;
 public class Customer {
 
 	private String id;
-	private String firstName;
+	private String firstName; 
 	private String secondName;
 	
 }

@@ -12,6 +12,6 @@ public class CustomerMixin {
 	private String firstName;
 	
 	@JsonProperty("familyName")
-	private String secondName;
+	private String secondName; 
 	
 }

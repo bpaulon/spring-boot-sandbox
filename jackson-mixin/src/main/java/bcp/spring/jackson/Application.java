@@ -18,10 +18,9 @@ public class Application {
 	}
 
 	public static void printBeanNames(ApplicationContext ctx) {
-		log.info("Beans provided by Spring Boot:");
+		log.info("Beans provided by Spring Boot: ");
 
 		String[] beanNames = ctx.getBeanDefinitionNames();
 		Arrays.asList(beanNames).stream().sorted().forEach(beanName -> log.info(beanName));
-
 	}
 }

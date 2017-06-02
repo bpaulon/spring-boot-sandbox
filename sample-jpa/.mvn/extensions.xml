@@ -1,0 +1,6 @@
+<extensions>
+  <extension>
+    <groupId>io.takari.polyglot</groupId>
+    <artifactId>polyglot-groovy</artifactId>
+    <version>0.2.0</version>
+  </extension></extensions>

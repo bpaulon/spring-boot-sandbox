@@ -40,7 +40,7 @@ public class PropertyAnnotatedFilter extends SimpleBeanPropertyFilter {
 	}
 
 	@Autowired
-	ObjectMapper objectMapper;
+	ObjectMapper objectMapper; 
 
 	@PostConstruct
 	public void registerFilter() {

@@ -21,8 +21,12 @@ public class SampleController {
 
 	@PostConstruct
 	public void registerMixin() {
-		// it launches java.lang.IllegalArgumentException: No converter found for return value of type: class bcp.spring.jackson.Customer
-		// withot the Mixin. Jackson does not know howo to serialize it
+		/*
+		 * Spring throws java.lang.IllegalArgumentException: No converter found for return 
+		 * value of type: class bcp.spring.jackson.Customer without the Mix-in. 
+		 * Jackson does not know how to to serialize it because the class has fluent properties
+		 * and not getters and setters
+		 */
 		objectMapper.addMixIn(Customer.class, CustomerMixin.class);
 	}
 	
