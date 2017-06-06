@@ -6,3 +6,7 @@
 /.project
 /gradle.properties
 
+/target/
+/pom.xml
+/.apt_generated/
+/.factorypath
