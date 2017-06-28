@@ -6,6 +6,7 @@ plugins {
 
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'groovy'
 
 group = 'bcp.spring'
 version = '1.0-SNAPSHOT'
