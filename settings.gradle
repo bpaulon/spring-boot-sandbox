@@ -1,0 +1,1 @@
+include 'jackson-mixin', 'sample-jpa', 'spring-boot-param'
