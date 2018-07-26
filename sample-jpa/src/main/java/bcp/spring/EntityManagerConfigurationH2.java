@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
-import org.springframework.boot.yaml.SpringProfileDocumentMatcher;
+//import org.springframework.boot.yaml.SpringProfileDocumentMatcher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -35,11 +35,6 @@ public class EntityManagerConfigurationH2 {
 	@Bean
 	public Properties properties() {
 		YamlPropertiesFactoryBean yaml = new YamlPropertiesFactoryBean();
-
-		SpringProfileDocumentMatcher spdm = new SpringProfileDocumentMatcher();
-		spdm.addActiveProfiles(env.getActiveProfiles());
-		yaml.setDocumentMatchers(spdm);
-
 		yaml.setResources(new ClassPathResource("resources.yaml"));
 		Properties properties = yaml.getObject();
 
@@ -57,7 +52,7 @@ public class EntityManagerConfigurationH2 {
 	}
 	
 	public static Map<String, Object> makeJpaProperties(Properties properties, List<String> keys) {
-		Map<String, Object> jpaProperties = new HashMap<String, Object>();
+		Map<String, Object> jpaProperties = new HashMap<>();
 
 		for (String key : keys) {
 			jpaProperties.put(key, properties.get(key));

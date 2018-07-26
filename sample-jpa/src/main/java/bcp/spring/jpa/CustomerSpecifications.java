@@ -1,7 +1,7 @@
 package bcp.spring.jpa;
 
 import org.springframework.data.jpa.domain.Specification;
-
+ 
 public class CustomerSpecifications {
 
 	public static Specification<Customer> hasFirstName(String name) {

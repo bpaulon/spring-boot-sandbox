@@ -1,6 +1,6 @@
 package bcp.spring;
 
-import static org.springframework.data.jpa.domain.Specifications.where;
+import static org.springframework.data.jpa.domain.Specification.where;
 
 import java.util.List;
 
