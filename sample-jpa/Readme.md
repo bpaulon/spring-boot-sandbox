@@ -1,3 +1,4 @@
+Run and browse http://localhost:801/jpa
 
 ## Eclipse configuration
 

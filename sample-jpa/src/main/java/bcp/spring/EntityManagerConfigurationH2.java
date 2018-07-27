@@ -1,25 +1,28 @@
 package bcp.spring;
 
+import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import javax.sql.DataSource;
 
-import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
-//import org.springframework.boot.yaml.SpringProfileDocumentMatcher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 
 @Configuration
 @EnableJpaRepositories(basePackages = { "bcp.spring" })
@@ -33,12 +36,14 @@ public class EntityManagerConfigurationH2 {
 	Environment env;
 	
 	@Bean
-	public Properties properties() {
+	@SneakyThrows(IOException.class)
+	public Properties properties()  {
 		YamlPropertiesFactoryBean yaml = new YamlPropertiesFactoryBean();
-		yaml.setResources(new ClassPathResource("resources.yaml"));
+		Resource res = new ClassPathResource("resources.yaml");
+		yaml.setResources(res);
 		Properties properties = yaml.getObject();
 
-		log.info("Properties loaded from {}", "resources.yaml");
+		log.info("Properties loaded from {}", res.getURI());
 		return properties;
 	}
 	
@@ -50,34 +55,33 @@ public class EntityManagerConfigurationH2 {
 
 		return jpaVendorAdapter;
 	}
-	
-	public static Map<String, Object> makeJpaProperties(Properties properties, List<String> keys) {
-		Map<String, Object> jpaProperties = new HashMap<>();
-
-		for (String key : keys) {
-			jpaProperties.put(key, properties.get(key));
-		}
-
-		return jpaProperties;
-	}
-	
+ 
+  /**
+   * A bean named entityManagerFactory is needed by the JPA repositories
+   * 
+   * @return
+   */
 	@Bean
-	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
-		emf.setDataSource(datasource);
-		emf.setPackagesToScan("bcp.spring");
+  public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+    LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
+    emf.setDataSource(datasource);
+    emf.setPackagesToScan("bcp.spring");
 
-		HibernateJpaVendorAdapter jpaVendorAdapter = makeVendorAdaptor(properties());
-		emf.setJpaVendorAdapter(jpaVendorAdapter);
+    HibernateJpaVendorAdapter jpaVendorAdapter = makeVendorAdaptor(properties());
+    emf.setJpaVendorAdapter(jpaVendorAdapter);
 
-		List<String> keys = Arrays.asList("hibernate.connection.charSet", "hibernate.format_sql",
-				"hibernate.hbm2ddl.auto", "hibernate.default_schema");
-		Map<String, Object> jpaProperties = makeJpaProperties(properties(), keys);
+    List<String> keys = Arrays.asList("hibernate.connection.charSet", 
+        "hibernate.format_sql", 
+        "hibernate.hbm2ddl.auto",
+        "hibernate.default_schema");
 
-		emf.setJpaPropertyMap(jpaProperties);
-		emf.afterPropertiesSet();
+    Map<String, Object> jpaProperties = keys.stream()
+        .collect(Collectors.toMap(Function.identity(), k -> properties().get(k)));
 
-		return emf;
-	}
+    emf.setJpaPropertyMap(jpaProperties);
+    emf.afterPropertiesSet();
+
+    return emf;
+  }
 
 }
