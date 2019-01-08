@@ -10,12 +10,10 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Setter
-@Getter
+@Data
 @Table(name = "CUSTOMER", schema = "SAMPLE_SCHEMA")
 @Entity
 @Builder

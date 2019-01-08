@@ -8,3 +8,8 @@ Run and browse http://localhost:801/jpa
 - Install Groovy Eclipse plugin from 
 	http://download.springsource.com/release/TOOLS/update/3.6.4.RELEASE/e4.5/springsource-tool-suite-3.6.4.RELEASE-e4.5-updatesite.zip 
 
+## How to build
+``gradle build``
+or skipping tests
+``gradle build -x test``
+

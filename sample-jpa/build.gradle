@@ -27,15 +27,15 @@ repositories {
 dependencies {
     compile group: 'org.springframework.boot', 
 			name: 'spring-boot-starter-web',
-			version: '2.0.3.RELEASE'
+			version: '2.0.4.RELEASE'
 			
     compile group: 'org.springframework.boot', 
 			name: 'spring-boot-starter-actuator',
-			version: '2.0.3.RELEASE'
+			version: '2.0.4.RELEASE'
 			
     compile group: 'org.springframework.boot', 
 			name: 'spring-boot-starter-data-jpa',
-			version: '2.0.3.RELEASE'
+			version: '2.0.4.RELEASE'
 			
     compile group: 'org.hibernate', 
 			name: 'hibernate-jpamodelgen', 
@@ -43,8 +43,8 @@ dependencies {
 			
     compile group: 'com.h2database', 
 			name: 'h2', 
-			version:'1.4.191'
-			
+			version:'1.4.197'
+
     compile group: 'org.codehaus.groovy', 
 			name: 'groovy-all', 
 			version:'2.4.6'
@@ -60,7 +60,11 @@ dependencies {
     compile(group: 'org.spockframework', name: 'spock-core', version:'1.0-groovy-2.4') {
 		exclude(module: 'groovy-all')
     }
-    
+
+ 	testCompile group: 'org.springframework.boot', 
+		name: 'spring-boot-starter-test', 
+		version:'2.0.4.RELEASE'
+		    
     testCompile 'junit:junit:4.12'
     
 }
