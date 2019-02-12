@@ -8,3 +8,10 @@ logging:
   level:
     org.springframework: INFO
     bcp.spring: DEBUG
+
+# Configuring info endpoint
+info:
+  app:
+    name: Spring JPA Sample Application
+    description: Test JPA Application
+    version: 1.0.0

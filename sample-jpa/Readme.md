@@ -1,4 +1,5 @@
 Run and browse http://localhost:801/jpa
+Actuator info: http://localhost:801/jpa/actuator/info
 
 ## Eclipse configuration
 
@@ -12,4 +13,5 @@ Run and browse http://localhost:801/jpa
 ``gradle build``
 or skipping tests
 ``gradle build -x test``
+
 

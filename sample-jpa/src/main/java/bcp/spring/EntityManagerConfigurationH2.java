@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,6 +31,7 @@ import lombok.extern.slf4j.Slf4j;
 public class EntityManagerConfigurationH2 {
 
 	@Autowired
+	@Qualifier("h2File")
 	DataSource datasource;
 
 	@Autowired

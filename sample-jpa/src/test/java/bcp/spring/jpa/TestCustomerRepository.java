@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
+// Configure an in-memory embedded database
 @DataJpaTest
 public class TestCustomerRepository {
 
@@ -31,6 +32,9 @@ public class TestCustomerRepository {
     assertEquals(2, employeeRepository.findAll().size());
   }
 
+  /**
+   * Test query using custom MySql syntax
+   */
   @Test
   public void testExecuteQuery() {
     Customer c1 = Customer.builder().firstName("Fae").secondName("Kinit").build();
