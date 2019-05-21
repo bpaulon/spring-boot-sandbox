@@ -1,4 +1,4 @@
-# spring-boot
+# spring-boot-param
 Spring boot sandbox: 
  - Converter for enumeration parameter
  - Argument resolving
