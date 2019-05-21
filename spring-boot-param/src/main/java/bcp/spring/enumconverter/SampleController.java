@@ -18,6 +18,7 @@ public class SampleController {
 
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
+		log.debug("--> Initializing binder {}", dataBinder);
 		dataBinder.registerCustomEditor(CategoryEnum.class, new GenericEnumConverter<CategoryEnum>(CategoryEnum.class));
 	}
 

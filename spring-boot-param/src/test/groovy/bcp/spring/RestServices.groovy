@@ -22,7 +22,7 @@ class RestServices {
 	static RESTClient CLIENT = buildClient()
 
 	static def buildClient() {
-		def endpoint = new RESTClient( 'http://localhost:8080/test-custom-resolver' )
+		def endpoint = new RESTClient( 'http://localhost:801/test-custom-resolver' )
 
 		endpoint.handler.failure = { resp, data ->
 			resp.setData(data)

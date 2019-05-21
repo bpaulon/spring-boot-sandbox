@@ -1,10 +1,10 @@
 # Server configuration
 server:
-  port: 8080
+  port: 801
   contextPath: /sandbox
 
 # See http://docs.spring.io/spring-boot/docs/1.2.1.RELEASE/reference/htmlsingle/#boot-features-custom-log-levels
 logging:
   level:
-    org.springframework.web=INFO
-    bcp.spring=DEBUG
+    org.springframework.web: INFO
+    bcp.spring: DEBUG
