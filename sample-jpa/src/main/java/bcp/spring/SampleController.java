@@ -7,7 +7,7 @@ import static org.springframework.data.jpa.domain.Specification.where;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +19,10 @@ import bcp.spring.jpa.CustomerRepository;
 @RestController
 public class SampleController {
 
+  
+  @Value("${env.path}")
+  String env;
+  
 	@Autowired
 	CustomerRepository repository;
 	
@@ -27,18 +31,19 @@ public class SampleController {
 
 	@RequestMapping("/")
 	public List<Customer> getCustomers() {
+	  System.out.println(env);
 		Customer customer = Customer.builder().firstName("John").secondName("Ripper").build();
 		repository.save(customer);
 
 		Specification<Customer> hasFirstNameAndSecondName = where(hasFirstName("John")).and(hasSecondName("Ripper"));
-		List<Customer> customers = repository.findAll(hasFirstNameAndSecondName);
-		return customers;
+		return repository.findAll(hasFirstNameAndSecondName);
 	}
 	
 	@RequestMapping("/all")
   public List<Customer> getAllCustomers() {
-    List<Customer> customers = repository.findAll();
-    return customers;
+	  Customer customer = Customer.builder().firstName("John").secondName("Ripper").build();
+    repository.save(customer);
+    return repository.findAll();
   }
 	
 }

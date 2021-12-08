@@ -15,3 +15,5 @@ info:
     name: Spring JPA Sample Application
     description: Test JPA Application
     version: 1.0.0
+    
+env.path: ${USERPROFILE}
