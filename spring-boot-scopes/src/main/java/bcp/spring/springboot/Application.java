@@ -11,7 +11,7 @@ public class Application {
 
 	public static void main(String[] args) {
 	  
-	  log.debug(">>> Starting application");
+	  log.debug(">>>> Starting  SpringBoot application");
 		SpringApplication.run(Application.class, args);
 	}
 
