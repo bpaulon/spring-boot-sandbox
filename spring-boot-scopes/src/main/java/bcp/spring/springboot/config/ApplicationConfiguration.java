@@ -11,8 +11,9 @@ import bcp.spring.springboot.services.PrototypeService;
 import bcp.spring.springboot.services.SingletonService;
 import lombok.extern.slf4j.Slf4j;
 
-@Configuration
 @Slf4j
+
+@Configuration
 public class ApplicationConfiguration {
   
   @Bean

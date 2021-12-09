@@ -3,16 +3,13 @@ package bcp.spring.springboot;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import lombok.extern.slf4j.Slf4j;
-
 @SpringBootApplication
-@Slf4j
-public class Application {
+public class MyApplication {
 
 	public static void main(String[] args) {
-	  
-	  log.debug(">>>> Starting  SpringBoot application");
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(MyApplication.class, args);
 	}
 
 }
+
+

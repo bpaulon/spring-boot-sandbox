@@ -7,7 +7,7 @@ import static org.apache.log4j.component.helpers.MessageFormatter.format;
 import javax.inject.Inject;
 import javax.inject.Provider;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.annotation.ApplicationScope;
 
@@ -24,23 +24,23 @@ public class ApplicationScopeController {
   // injected once when this controller is created
   PrototypeService prototypeService;
 
-  @RequestMapping("/applicationControllerWithPrototypeService")
+  @GetMapping("/applicationControllerWithPrototypeService")
   public String serveRequest() {
     String msg = format(CALLED_MSG, identity(this), identity(prototypeService));
-    
+
     log.debug(msg);
     return msg;
   }
 
   @Inject
-  // lazy injection of request service. Provide.get() returns a new instance 
+  // lazy injection. Provider.get() returns a new instance
   Provider<RequestScopeService> requestScopeServiceProvider;
 
-  @RequestMapping("/applicationControllerWithProvidedService")
+  @GetMapping("/applicationControllerWithProvidedService")
   public String serveRequestWithProvidedService() {
-    String msg = format(CALLED_MSG + " second provided service " + identity(requestScopeServiceProvider.get()),
-        identity(this), identity(requestScopeServiceProvider.get()));
+    String msg = format(CALLED_MSG, identity(this), identity(requestScopeServiceProvider.get()));
 
+    // another requestScopeServiceProvider.get() returns the same instance 
     log.debug(msg);
     return msg;
   }

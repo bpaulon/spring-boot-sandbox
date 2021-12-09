@@ -20,12 +20,12 @@ import lombok.extern.slf4j.Slf4j;
 public class RequestScopeService {
 
   public RequestScopeService() {
-    log.debug(CONSTRUCTOR_MSG, identity(this));
+    // Bean creation
   }
   
   @PostConstruct
   public void postConstruct() {
-    log.debug(POSTCONSTRUCT_MSG, identity(this));
+    // Called after 
   }
   
   @PreDestroy
