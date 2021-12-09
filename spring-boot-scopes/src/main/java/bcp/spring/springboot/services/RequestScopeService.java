@@ -1,6 +1,6 @@
 package bcp.spring.springboot.services;
 
-import static bcp.spring.springboot.util.LogUtil.CONSTRUCTOR_MSG;
+import static bcp.spring.springboot.util.LogUtil.*;
 import static bcp.spring.springboot.util.LogUtil.POSTCONSTRUCT_MSG;
 import static bcp.spring.springboot.util.LogUtil.PREDESTROY_MSG;
 import static bcp.spring.springboot.util.LogUtil.identity;
@@ -31,5 +31,9 @@ public class RequestScopeService {
   @PreDestroy
   public void preDestroy() {
     log.debug(PREDESTROY_MSG, identity(this));
+  }
+  
+  public void doStuff() {
+    log.debug(CALLED_MSG, identity(this));
   }
 }
