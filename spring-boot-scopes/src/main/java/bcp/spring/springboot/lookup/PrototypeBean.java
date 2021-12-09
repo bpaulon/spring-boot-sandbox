@@ -12,4 +12,7 @@ public class PrototypeBean {
   @Inject
   InjectedBean injectedBean;
   
+  public void doStuff() {
+    // do stuff
+  }
 }
