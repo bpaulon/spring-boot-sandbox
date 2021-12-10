@@ -7,7 +7,6 @@ import static org.apache.log4j.component.helpers.MessageFormatter.format;
 import javax.inject.Inject;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.annotation.RequestScope;
 
@@ -49,7 +48,7 @@ public class RequestScopeController {
   @Inject
   RequestScopeService requestScopeService;
   
-  @RequestMapping("/requestControllerWithRequestScopeService")
+  @GetMapping("/requestControllerWithRequestScopeService")
   public String serveRequestWithRequestScopedService() {
     log.debug(CALLED_MSG, identity(this), identity(requestScopeService));
     return format(CALLED_MSG, identity(this), identity(requestScopeService));

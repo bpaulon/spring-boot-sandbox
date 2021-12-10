@@ -1,7 +1,6 @@
 package bcp.spring.springboot.services;
 
-import static bcp.spring.springboot.util.LogUtil.*;
-import static bcp.spring.springboot.util.LogUtil.POSTCONSTRUCT_MSG;
+import static bcp.spring.springboot.util.LogUtil.CALLED_MSG;
 import static bcp.spring.springboot.util.LogUtil.PREDESTROY_MSG;
 import static bcp.spring.springboot.util.LogUtil.identity;
 

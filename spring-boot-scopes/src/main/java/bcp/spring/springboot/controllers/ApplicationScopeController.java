@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import javax.inject.Provider;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.annotation.ApplicationScope;
 
@@ -36,7 +35,7 @@ public class ApplicationScopeController {
   @Inject
   Provider<RequestScopeService> requestScopeServiceProvider;
 
-  @RequestMapping("/applicationControllerWithProvidedService")
+  @GetMapping("/applicationControllerWithProvidedService")
   public String serveRequestWithProvidedService() {
     String msg = format(CALLED_MSG, identity(this), identity(requestScopeServiceProvider.get()));
 
