@@ -1,6 +1,7 @@
 package bcp.spring.springboot.lookup;
 
 import static bcp.spring.springboot.util.LogUtil.*;
+import static org.apache.log4j.component.helpers.MessageFormatter.format;
 
 import org.springframework.beans.factory.annotation.Lookup;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +14,13 @@ import lombok.extern.slf4j.Slf4j;
 public class LookupController {
 
   @RequestMapping("/lookupController")
-  public void serveRequest() {
+  public String serveRequest() {
     PrototypeBean prototypeBean = getPrototypeBean();
-    log.debug(CALLED_MSG, identity(this), identity(prototypeBean));
+    String msg = format(CALLED_MSG, identity(this), identity(prototypeBean));
+    
     log.debug("{}", identity(prototypeBean.injectedBean));
+    log.debug(msg);
+    return msg;
   }
 
   @Lookup

@@ -26,7 +26,7 @@ public class SingletonService {
   @PostConstruct 
   public void postConstruct() {
     log.debug(POSTCONSTRUCT_MSG, identity(this));
-    log.debug("injected field in postConstruct {}", injectedService);
+    log.debug("SingletonService.postConstruct {}", injectedService);
   }
   
 }

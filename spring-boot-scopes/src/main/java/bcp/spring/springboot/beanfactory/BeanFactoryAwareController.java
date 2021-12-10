@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import bcp.spring.springboot.services.RequestScopeService;
 import lombok.extern.slf4j.Slf4j;
 
-
 @Slf4j
-
 @RestController
 public class BeanFactoryAwareController {
 
@@ -29,7 +27,3 @@ public class BeanFactoryAwareController {
     return msg;
   }
 }
-
-
-
-

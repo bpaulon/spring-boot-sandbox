@@ -17,9 +17,10 @@ public abstract class AbstractLookupController {
   @RequestMapping("/abstractLookupController")
   public String serveRequest() {
     PrototypeBean prototypeBean = getPrototypeBean();
-    log.debug(CALLED_MSG, identity(this), identity(prototypeBean));
+    String msg = format(CALLED_MSG, identity(this), identity(prototypeBean));
+    log.debug(msg);
     log.debug("{}", identity(prototypeBean.injectedBean));
-    return format(CALLED_MSG, identity(this), identity(prototypeBean));
+    return msg;
   }
   
   @Lookup
